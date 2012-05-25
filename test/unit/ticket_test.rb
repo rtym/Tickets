@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class TicketTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  should "be valid" do
+    assert Ticket.new.valid?
+  end
 end

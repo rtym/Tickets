@@ -11,11 +11,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120525195112) do
+ActiveRecord::Schema.define(:version => 20120525202123) do
 
-  create_table "tickets", :force => true do |t|
+  create_table "ticket_statuses", :force => true do |t|
+    t.string   "name"
+    t.string   "alias"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "tickets", :force => true do |t|
+    t.string   "reporter",         :null => false
+    t.string   "email",            :null => false
+    t.string   "number",           :null => false
+    t.integer  "ticket_status_id", :null => false
+    t.integer  "user_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "tickets", ["ticket_status_id"], :name => "index_tickets_on_ticket_status_id"
+  add_index "tickets", ["user_id"], :name => "index_tickets_on_user_id"
 
 end
