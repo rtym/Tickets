@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(:version => 20120525202123) do
 
   create_table "ticket_statuses", :force => true do |t|
     t.string   "name"
-    t.string   "alias"
+    t.string   "code"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
