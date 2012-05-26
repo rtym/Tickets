@@ -1,0 +1,11 @@
+%p#notice= notice
+
+%h2= @ticket.number
+%h2= @ticket.reporter
+%h2= @ticket.email
+%h2= @ticket.ticket_status.name
+%h3= @ticket.content
+
+= link_to 'Edit', edit_ticket_path(@ticket)
+\|
+= link_to 'Back', tickets_path

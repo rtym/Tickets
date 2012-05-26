@@ -17,7 +17,7 @@ class Ticket < ActiveRecord::Base
   }
 
   def self.get_last_number
-    order("`created_at` DESC").limit(1).first.number
+    order("`number` DESC").limit(1).first.number
   rescue
     "AA-000000"
   end

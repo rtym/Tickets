@@ -1,0 +1,27 @@
+%h1 Listing Tickets
+
+%table
+  %tr
+    %th= "Number"
+    %th= "Reporter"
+    %th= "Email"
+    %th= "Status"
+    %th
+    %th
+    %th
+
+  - @tickets.each do |ticket|
+    - unless ticket.blank?
+      %tr
+        %td= ticket.number
+        %td= ticket.reporter
+        %td= ticket.email
+        %td= ticket.ticket_status.name
+        %td
+          = link_to 'Show', ticket
+          = link_to 'Edit', edit_ticket_path(ticket)
+          = link_to 'Destroy', ticket, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Article', new_ticket_path
