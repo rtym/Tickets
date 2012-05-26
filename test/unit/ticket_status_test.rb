@@ -1,8 +1,12 @@
 require 'test_helper'
 
 class TicketStatusTest < Test::Unit::TestCase
-  should have_many :tickets
+  context 'relations' do
+    should have_many :tickets
+  end
 
-  should_not allow_value(nil).for(:name)
-  should_not allow_value(nil).for(:code)
+  context 'validations' do
+    should validate_presence_of :name
+    should validate_presence_of :code
+  end
 end

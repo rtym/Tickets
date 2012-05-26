@@ -1,12 +1,15 @@
 class Ticket < ActiveRecord::Base
-  attr_accessible :email, :number, :reporter, :ticket_status_id, :user_id
+  attr_accessible :email, :reporter, :ticket_status_id, :user_id
+  attr_reader :number
 
   belongs_to :ticket_status
   belongs_to :user
   has_many :ticket_responses
 
   validates_uniqueness_of :number
+
   validates_presence_of :email, :number, :reporter, :ticket_status
+
   validates :email, :email => true
 
   after_initialize lambda{

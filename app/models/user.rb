@@ -8,4 +8,6 @@ class User < ActiveRecord::Base
   validates_presence_of :login
   validates_presence_of :name
   validates_presence_of :surname
+
+  validates_uniqueness_of :email, :case_sensitive => false
 end

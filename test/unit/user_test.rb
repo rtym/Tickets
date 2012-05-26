@@ -1,15 +1,21 @@
 require 'test_helper'
 
 class UserTest < Test::Unit::TestCase
-  should have_many :tickets
-  should have_many :ticket_responses
+  context 'relations' do
+    should have_many :tickets
+    should have_many :ticket_responses
+  end
 
-  should allow_value("test@test.com").for(:email)
+  context 'validations' do
+    should validate_presence_of :name
+    should validate_presence_of :surname
+    should validate_presence_of :email
+  end
 
-  should_not allow_value(:blah).for(:email)
-  should_not allow_value("test@com").for(:email)
+  context 'check_email' do
+    should allow_value("test@test.com").for(:email)
 
-  should_not allow_value(nil).for(:name)
-  should_not allow_value(nil).for(:surname)
-  should_not allow_value(nil).for(:email)
+    should_not allow_value(:blah).for(:email)
+    should_not allow_value("test@com").for(:email)
+  end
 end

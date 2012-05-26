@@ -1,10 +1,14 @@
 require 'test_helper'
 
 class TicketResponseTest < Test::Unit::TestCase
-  should belong_to :ticket
-  should belong_to :user
+  context 'relations' do
+    should belong_to :ticket
+    should belong_to :user
+  end
 
-  should_not allow_value(nil).for(:ticket)
-  should_not allow_value(nil).for(:content)
-  should_not allow_value(nil).for(:user)
+  context 'validations' do
+    should validate_presence_of :ticket
+    should validate_presence_of :content
+    should validate_presence_of :user
+  end
 end
