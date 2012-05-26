@@ -10,6 +10,7 @@ class TicketTest < Test::Unit::TestCase
     should validate_presence_of :number
     should validate_presence_of :email
     should validate_presence_of :ticket_status
+    should validate_presence_of :content
   end
 
   context 'check_email' do
