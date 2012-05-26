@@ -8,6 +8,8 @@
   = f.text_field :email
   %h3= f.label "Content:"
   = f.text_area :content
+  %h3= f.label "Status:"
+  = select("ticket", "ticket_status_id", TicketStatus.all.collect {|t| [ t.name, t.id ] })
 
   .actions
     = f.submit 'Save'
