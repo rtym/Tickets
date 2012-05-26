@@ -23,6 +23,8 @@ gem 'jquery-rails'
 gem 'execjs'
 gem 'therubyracer'
 gem 'haml-rails'
+gem 'mail'
+gem 'email_validator'
 
 group :test do
   gem 'shoulda'

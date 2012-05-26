@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120525202123) do
+ActiveRecord::Schema.define(:version => 20120526080133) do
+
+  create_table "ticket_responses", :force => true do |t|
+    t.integer  "ticket_id"
+    t.text     "content"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "ticket_responses", ["ticket_id"], :name => "index_ticket_responses_on_ticket_id"
+  add_index "ticket_responses", ["user_id"], :name => "index_ticket_responses_on_user_id"
 
   create_table "ticket_statuses", :force => true do |t|
     t.string   "name"
@@ -32,5 +43,14 @@ ActiveRecord::Schema.define(:version => 20120525202123) do
 
   add_index "tickets", ["ticket_status_id"], :name => "index_tickets_on_ticket_status_id"
   add_index "tickets", ["user_id"], :name => "index_tickets_on_user_id"
+
+  create_table "users", :force => true do |t|
+    t.string   "login",      :null => false
+    t.string   "name",       :null => false
+    t.string   "surname",    :null => false
+    t.string   "email",      :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
 end
